@@ -55,6 +55,6 @@ jobs:
       # 第五步：将合并后的代码推送到你的 GitHub 仓库
       - name: Push changes to origin
         run: |
-          # 使用 GITHUB_TOKEN 进行身份验证以推送代码
-          # 注意：如果你的仓库有分支保护规则，可能需要 Personal Access Token
-          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main
+         # 关键修复：将 Token 注入远程 URL，让 git push 能通过验证
+         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+         git push origin main
