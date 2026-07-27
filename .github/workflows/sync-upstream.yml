@@ -9,7 +9,7 @@ on:
 # 即使使用了 PAT，显式声明权限也是最佳实践
 permissions:
   contents: write
-  workflows: write 
+  
 
 jobs:
   sync-upstream:
